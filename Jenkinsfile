@@ -4,7 +4,7 @@ pipeline {
   environment {
     DOCKER_IMAGE = "pslmtm1/todo-application"
     DOCKER_CREDENTIALS = "docker-hub-credentials"
-    DOCKER_CREDENTIAL_ID = docker-hub-credentials'
+    DOCKER_CREDENTIAL_ID = 'docker-hub-credentials'
     JAR_FILE = "taget/*.jar"
   }
 
