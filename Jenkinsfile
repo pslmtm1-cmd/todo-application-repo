@@ -24,9 +24,10 @@ pipeline {
       steps {
         script {
           sh "docker build -t ${DOCKER_IMAGE}:latest ."
-          withCredentials([usernamePassword(credentialsId: DOCKER_CREDETIALS, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-            sh "docker login -u {DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
-            sh "docker push ${DOCKER_IMAGE}:latest"
+          withCredentials([usernamePassword(credentialsId: DOCKER_CREDETIAL_ID, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+            sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
+            sh "docker push ${DOCKERHUB_USERNAME}/${IMAGE_TAG}"
+            sh 'docker logout'
           }
         }
       } 
