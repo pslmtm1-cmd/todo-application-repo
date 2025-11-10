@@ -26,7 +26,7 @@ pipeline {
           sh "docker build -t ${DOCKER_IMAGE}:latest ."
           withCredentials([usernamePassword(credentialsId: DOCKER_CREDETIALS, passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
             sh "docker login -u {DOCKER_USERNAME} -p ${DOCKER_PASSWORD}"
-            sh "docker push ${DOCKER_IMAGE}: latest"
+            sh "docker push ${DOCKER_IMAGE}:latest"
           }
         }
       } 
@@ -47,7 +47,7 @@ pipeline {
     }
     stage('Teardown Docker Compose') {
       steps {
-        sh "docker compose down -y"
+        sh "docker compose down -v"
       }
     }
 
