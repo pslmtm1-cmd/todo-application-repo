@@ -56,6 +56,7 @@ pipeline {
         sh "rm -rf *"
       } 
     }
+  } 
     post {
       success {
         echo "Pipeline finished successfully!"
